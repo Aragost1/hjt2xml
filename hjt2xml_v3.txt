@@ -1,0 +1,28 @@
+use txt2xml_v3.htm
+
+1lines:
+s=f.ReadLine();s='<end node> 5P9i0s8y19Z';
+
+test:
+(s=='<end node> 5P9i0s8y19Z')
+
+caption:
+while(s!='<node>'){
+  if(s.indexOf('id')==0){node.id=s.substr(3)}
+  else{
+    if(s.indexOf('dt=Text')==0){
+      node.dt='txt'}
+    else{
+      if(s.indexOf('dt=RTF')==0){
+        node.dt='rtf';}
+      else{
+        if(s.indexOf('icon1=')==0){
+          node.ico=s.substr(6);}
+      }
+    }
+  }
+  s=f.ReadLine();
+}
+node.caption=f.ReadLine();
+node.level=Number(f.ReadLine())+1;
+s=f.ReadLine();
